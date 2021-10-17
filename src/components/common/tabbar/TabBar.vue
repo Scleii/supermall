@@ -10,7 +10,7 @@
   }
 </script>
 
-<style scoped lang="less">
+<style scoped="scoped" lang="less">
   #tab-bar {
     /* 设置flex布局将子项目按份数平均布局 */
     display: flex;

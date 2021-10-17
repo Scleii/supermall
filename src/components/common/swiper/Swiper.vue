@@ -1,15 +1,19 @@
 <template>
   <div id="hy-swiper">
     <div class="swiper" @touchstart="touchStart" @touchmove="touchMove"
-@touchend="touchEnd">
+         @touchend="touchEnd"
+         ref="swiper">
       <slot></slot>
     </div>
     <slot name="indicator">
     </slot>
     <div class="indicator">
       <slot name="indicator" v-if="showIndicator && slideCount>1">
-        <div v-for="(item, index) in slideCount" class="indi-item" :class="{active:
-index === currentIndex-1}"  :key="index"></div>
+        <div v-for="(item, index) in slideCount"
+             class="indi-item"
+             :class="{active:index === currentIndex-1}"
+             :key="index">
+        </div>
       </slot>
     </div>
   </div>
@@ -17,7 +21,7 @@ index === currentIndex-1}"  :key="index"></div>
 
 <script>
   export default {
-    name: "Swiper",
+    name: 'Swiper',
     props: {
       interval: {
         type: Number,
@@ -108,7 +112,8 @@ index === currentIndex-1}"  :key="index"></div>
       // 操作DOM， 在DOM前后添加slide
       handleDom() {
         // 1.获取要操作的元素
-        let swiperEl = document.querySelector('.swiper');
+        // let swiperEl = document.querySelector('.swiper'); 这个querySelector要查询所有的.swiper类
+        let swiperEl = this.$refs.swiper;
         let slidesEls = swiperEl.getElementsByClassName('slide');
 
         // 2.保存个数
